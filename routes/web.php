@@ -19,6 +19,20 @@ Route::get('/site', function () {
     return view('index');
 });
 
+//Route::group(['middleware' => ['auth']], function(){
+
+    Route::prefix('admin')->namespace('admin')->name('admin.')->group(function(){
+   
+        Route::resource('products', 'ProductController');
+       
+     });
+     
+  //});
+  
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
