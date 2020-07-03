@@ -4,23 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Product;
-use App\Http\Requests\ProductRequest;
-
-class ProductController extends Controller
+use App\Client;
+use App\Http\Requests\ClientRequest;
+class ClientController extends Controller
 {
-
-    private $product;
-
-    public function __construct(Product $product)
-    {
-
-        $this->product = $product;
-
-    }
-
-
-
     /**
      * Display a listing of the resource.
      *
@@ -28,9 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->paginate(10);
-
-        return view('admin.product.index', compact('products'));
+        $client = Client::paginate(10);
+        return view('admin.client.index', compact('client'));
     }
 
     /**
@@ -40,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        return view('admin.client.create');
     }
 
     /**
@@ -49,15 +35,13 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(ClientRequest $request)
     {
-
         $data= $request->all();
 
-        $salvar = Product::create($data);
+        $salvar =  Client::create($data);
         
-        return redirect()->route('admin.products.index');
-     
+        return redirect()->route('admin.client.index');
     }
 
     /**
@@ -68,7 +52,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -79,9 +63,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $client = Client::findOrFail($id);
 
-        return view('admin.product.edit', compact('product'));
+        return view('admin.client.edit', compact('client'));
     }
 
     /**
@@ -95,12 +79,10 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $product = Product::find($id);
+        $client = Client::findOrFail($id);
+        $client->update($data);
 
-      //  dd($data);
-        $product->update($data);
-
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.client.index');
     }
 
     /**
@@ -111,10 +93,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $produto = Product::findOrFail($id);
-        $produto->delete(); 
+        $client = client::findOrFail($id);
+        $client->delete(); 
 
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.client.index');
     }
 }

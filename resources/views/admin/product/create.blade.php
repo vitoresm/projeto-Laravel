@@ -5,6 +5,8 @@
 
 <div >
     
+    <h1>Criar Produtos</h1>
+
     <form action="{{route('admin.products.store')}}" method="POST">
         
         @csrf

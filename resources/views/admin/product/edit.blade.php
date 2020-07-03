@@ -5,8 +5,10 @@
 
 <div >
     
-    <form action="{{route('admin.products.store', ['product' => $product->id])}}" method="POST">
+    <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST">
     @csrf
+    @method('PUT')
+
         <div class="form-group">
             
             <label for="">Nome Produto</label>
@@ -24,32 +26,34 @@
         <div class="form-group">
             
             <label for="">Descrição</label>
-            <textarea class="form-control @error('descricao') is-invalid" value="{{old('descricao')}}" @enderror   name="descricao"  rows="3" ></textarea>
-           
-            @error('descricao')
-               
-                <div class="invalid-feedback">
-                    {{$message}}
-                </div>
+                <textarea type="text" class="form-control" @error('descricao') class="is-invalid"  
+                @enderror   name="descricao"  rows="3" ></textarea>
+            
+                @error('descricao')
+                
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
 
-            @enderror
+                @enderror
         
         </div>
         
        
         
         <div class="form-group">
+            
             <label for="">Preço</label>
             <input type="text" name="preco" value="{{$product->preco}}"  class="form-control @error('preco') is-invalid" value="{{old('preco')}}" @enderror  >
             @error('preco')
-            <div class="invalid-feedback">
-               {{$message}}
-            </div>
-        @enderror
+                <div class="invalid-feedback">
+                    
+                    {{$message}}
+                
+                </div>
+            @enderror
         </div>
         
-        
-
         <div class="form-group">
             <button class="btn btn-lg" type="submit">editar produto</button>
         </div>

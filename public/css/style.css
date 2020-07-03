@@ -1,0 +1,65 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+
+ /* ----- navbar ----- */
+
+
+
+.titulotabela h1 {
+    
+    text-align: center;
+    padding: 30px;
+
+}
+
+li {
+    position: relative;
+    width: 100%;
+    top: 70px;
+    padding: 10px;
+}
+a:hover{
+    background-color: #b5b5c1e1;
+}
+
+ /* table clientes */
+.table-overflow {
+    max-height:400px;
+  
+}
+
+    #dtHorizontalExample th, td {
+    white-space: nowrap;
+    }
+    
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+    }
+
+
+
+

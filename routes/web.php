@@ -24,6 +24,8 @@ Route::get('/site', function () {
     Route::prefix('admin')->namespace('admin')->name('admin.')->group(function(){
    
         Route::resource('products', 'ProductController');
+
+        Route::resource('client', 'clientController');
        
      });
      
