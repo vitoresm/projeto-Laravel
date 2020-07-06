@@ -26,6 +26,8 @@ Route::get('/site', function () {
         Route::resource('products', 'ProductController');
 
         Route::resource('client', 'clientController');
+
+        Route::resource('pedido', 'PedidoController');
        
      });
      

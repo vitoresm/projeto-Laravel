@@ -44,6 +44,12 @@
 
                 </li>
 
+                <li>
+
+                    <a class="nav-link"  href="{{route('admin.pedido.index')}}" >Pedidos</a>
+
+                </li>
+
               </div>
              
          </div>
