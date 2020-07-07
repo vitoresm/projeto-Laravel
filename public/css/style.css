@@ -16,10 +16,6 @@ ul{
     list-style: none;
 }
 
- /* ----- navbar ----- */
-
-
-
 .titulotabela h1 {
     
     text-align: center;
@@ -27,15 +23,6 @@ ul{
 
 }
 
-li {
-    position: relative;
-    width: 100%;
-    top: 70px;
-    padding: 10px;
-}
-a:hover{
-    background-color: #b5b5c1e1;
-}
 
  /* table clientes */
 .table-overflow {
@@ -47,19 +34,34 @@ a:hover{
     white-space: nowrap;
     }
     
-    table.dataTable thead .sorting:after,
-    table.dataTable thead .sorting:before,
-    table.dataTable thead .sorting_asc:after,
-    table.dataTable thead .sorting_asc:before,
-    table.dataTable thead .sorting_asc_disabled:after,
-    table.dataTable thead .sorting_asc_disabled:before,
-    table.dataTable thead .sorting_desc:after,
-    table.dataTable thead .sorting_desc:before,
-    table.dataTable thead .sorting_desc_disabled:after,
-    table.dataTable thead .sorting_desc_disabled:before {
-    bottom: .5em;
+ 
+
+    /* menu lateral */
+    body{
+        padding-top: 16px;
+        
     }
-
-
-
-
+    
+    
+    .sidebar{
+        position: relative, fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        padding: 48px 0 0;
+        box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
+     
+    }
+    .sidebar-heading{
+        font-size: .75rem;
+        text-transform: uppercase;
+    }
+    
+    .sidebar .nav-link{
+        font-weight: 600;
+        color: #333;
+    }
+    .sidebar .nav-link.active{
+        color: #007bff;
+    }

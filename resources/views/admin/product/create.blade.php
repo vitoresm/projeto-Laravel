@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('conteudo')
-<h1>Criar Produto</h1>
+
 
 <div >
     
-    <h1>Criar Produtos</h1>
+    <h1>Criar Produto</h1>
 
     <form action="{{route('admin.products.store')}}" method="POST">
         
@@ -56,7 +56,7 @@
         
 
         <div class="form-group">
-            <button class="btn btn-lg" type="submit">criar produto</button>
+            <button class="btn btn-lg btn-primary" type="submit">criar produto</button>
         </div>
         
     </form>    
