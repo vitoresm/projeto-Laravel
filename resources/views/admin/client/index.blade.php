@@ -8,6 +8,10 @@
 
 
 <div class="container">
+   
+    <div class="card-body">
+        <h5>Exibindo {{$client->count() }} clientes de {{$client->total()}} ({{$client->firstItem()}} a {{$client->lastItem()}})</h5>
+    </div>
 
     <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
     width="100%" >

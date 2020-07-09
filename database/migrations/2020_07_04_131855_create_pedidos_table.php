@@ -14,26 +14,18 @@ class CreatePedidosTable extends Migration
     public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
 
-            $table->unsignedBigInteger('client_id');
-            
-            $table->string('nome_cliente');
-
-            $table->unsignedBigInteger('produto_id');
-
-            $table->integer('quantidade');
-
-            $table->integer('valor');
+            $table->integer('cliente_id')->unsigned();
 
             $table->timestamps();
 
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('cliente_id')->references('id')->on('clients');
             
-            $table->foreign('produto_id')->references('id')->on('products');
-
         });
     }
+
+    // tabela 2 pedidos_produtos id, id_pedido, id_produto, quantidade 
 
     /**
      * Reverse the migrations.

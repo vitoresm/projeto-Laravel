@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             
-                @foreach ($pedidos as $item)
+                @foreach ($errors as $item)
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->nome_cliente}}</td>
@@ -51,7 +51,7 @@
         </tbody>        
     </table>
     <div class="">
-        {{$pedidos->links()}}
+        {{$errors->links()}}
 
     </div>
     

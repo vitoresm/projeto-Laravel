@@ -21,11 +21,11 @@ Route::get('/site', function () {
 
 //Route::group(['middleware' => ['auth']], function(){
 
-    Route::prefix('admin')->namespace('admin')->name('admin.')->group(function(){
+    Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
    
         Route::resource('products', 'ProductController');
 
-        Route::resource('client', 'clientController');
+        Route::resource('client', 'ClientController');
 
         Route::resource('pedido', 'PedidoController');
        

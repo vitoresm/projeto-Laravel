@@ -98,6 +98,35 @@
     <!-- Bootstrap JavaScript -->
     <script src="{{asset('js/app.js')}}"></script>
 
+
+    <script>
+    $("#add-produto").click(function () {
+
+        $('#add').append(`  
+        <div  class="form-group col-md-8" >
+
+        <select class="custom-select mr-sm-2"  name="produto[]" >
+        @if(request()->is('admin/pedido/create'))
+        @foreach ($produtos as $produto)
+        <option value="{{$produto->id}}">{{$produto->nome}}</option>
+
+        @endforeach
+
+        @endif 
+        </select>
+
+        </div>    
+
+        <div class="form-group col-md-4">
+        <label for="">Quantidade</label>
+        <input name="quantidade[]" type="number" class="form-control">
+        </div>
+
+        </div> `);  
+
+        });
+    </script> 
+
      <!-- Datatable JavaScript  -->
      <script src="{{asset('js/datatable.js')}}"></script>
   

@@ -9,6 +9,10 @@
 
 <div class="container">
 
+    <div class="card-body">
+        <h5>Exibindo {{$products->count() }} clientes de {{$products->total()}} ({{$products->firstItem()}} a {{$products->lastItem()}})</h5>
+    </div>
+
     <table  id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
   >
         <thead>

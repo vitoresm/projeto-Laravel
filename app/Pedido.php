@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
-    protected $fillable = ['client_id', 'nome_cliente', 'produto_id', 'quantidade', 'valor' ];
+    protected $fillable = ['cliente_id'];
 
-    public function client(){
-        return $this->hasOne(Client::class, 'client_id');
-    }
+   // public function client(){
+//        return $this->hasOne(Client::class, 'cliente_id');
+ //   }
 
-    public function products(){
-        return $this->hasMany(Product::class, 'produto_id');
-    }
+ //   public function products(){
+ //       return $this->hasMany(Product::class, 'produto_id');
+//    }
 }
 
