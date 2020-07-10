@@ -17,8 +17,13 @@ class PedidoController extends Controller
      */
     public function index()
     {
+        $produtos = Product::all('id', 'nome', 'preco'); 
+        $produtospedido = PedidoProduto::all(); 
+        $clientes = Client::all('id','nome');       
         $pedidos = Pedido::paginate(10);
-        return view('admin.pedido.index', compact('pedidos'));
+       
+        return view('admin.pedido.index', compact('pedidos', 'clientes', 'produtos', 'produtospedido'));
+    
     }
 
     /**
@@ -30,7 +35,7 @@ class PedidoController extends Controller
     {
 
         $clients = Client::all();
-        $produtos = product::all();
+        $produtos = product::all(); 
         return view('admin.pedido.create', compact('clients', 'produtos'));
         
     }
@@ -68,7 +73,7 @@ class PedidoController extends Controller
         }
 
 
-        return redirect()->route('admin.pedidos.index');
+        return redirect()->route('admin.pedido.index');
 
     }
 
@@ -86,11 +91,22 @@ class PedidoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id_pedido, $id_cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function pedidoUpdate($id_pedido, $id_cliente)
     {
+        //dd($id_cliente);
+
+        $cliente = Client::findOrFail($id_cliente);
+
+        $pedidos = PedidoProduto::where(['id_pedido' => $id_pedido])->get(); 
+    
+        //dd($pedidos);
+        $produtos = product::all();
+
+        return view('admin.pedido.edit', compact('cliente', 'pedidos', 'produtos'));
+
     }
 
     /**
@@ -102,7 +118,9 @@ class PedidoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+     
+
     }
 
     /**
@@ -115,4 +133,6 @@ class PedidoController extends Controller
     {
         //
     }
+
+  
 }

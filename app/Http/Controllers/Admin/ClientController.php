@@ -16,6 +16,8 @@ class ClientController extends Controller
     public function index()
     {
         $client = Client::paginate(10);
+
+        //dd($client);
         return view('admin.client.index', compact('client'));
     }
 
@@ -41,7 +43,7 @@ class ClientController extends Controller
 
         $salvar =  Client::create($data);
         
-        return redirect()->route('admin.client.index');
+        return redirect()->route('admin.cliente.index');
     }
 
     /**
@@ -82,7 +84,7 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $client->update($data);
 
-        return redirect()->route('admin.client.index');
+        return redirect()->route('admin.cliente.index');
     }
 
     /**
@@ -97,6 +99,6 @@ class ClientController extends Controller
         $client->delete(); 
 
 
-        return redirect()->route('admin.client.index');
+        return redirect()->route('admin.cliente.index');
     }
 }

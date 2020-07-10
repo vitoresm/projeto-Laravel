@@ -6,7 +6,7 @@
     
     <h1>Salvar cliente</h1>
 
-    <form  action="{{route('admin.client.update', ['client' => $client->id])}}" method="POST">
+    <form  action="{{route('admin.cliente.update', ['cliente' => $client->id])}}" method="POST">
     @csrf   
     @method('PUT')
         <div class="form-group">

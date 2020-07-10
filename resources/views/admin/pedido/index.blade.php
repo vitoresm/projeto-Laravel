@@ -15,33 +15,84 @@
             <tr>
                
                 <th>ID</th>
-                <th>Nome do cliente</th>
-                <th>Produto</th>
-                <th>Valor</th>
+                <th>Nome do Cliente</th>
+                <th>Valor Total</th>
+                <th>Ação</th>
                
             </tr>
         </thead>
         <tbody>
             
-                @foreach ($errors as $item)
+                @foreach ($pedidos as $item)
                 <tr>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->nome_cliente}}</td>
-                    <td>{{$item->telefone}}</td>
-                    <td>{{$item->email}}</td>
-         
                     <td>
-                        <form action="{{route('admin.pedido.destroy',['pedido'=> $item->id])}}" method="POST">
+                        @foreach ($clientes as $i)
+                            @if($item->cliente_id ==  $i->id) {{$i->nome}}
+                            
+                           
+                            @endif 
+                       
+                         @endforeach
+                    
+
+                    </td>
+                    <td>
+
+                      R$
+                      @foreach ($produtospedido as $it)
+                        
+                        @if($item->id == $it->id_pedido)    
+                            
+
+
+                            @foreach ($produtos as $produto)
+                                
+                                @php 
+                                
+                                if($it->id_produto == $produto->id){
+                                
+                                $preco = $preco ?? 0;
+
+                                $preco = $preco + ($it->quantidade * $produto->preco);
+                                
+                                }
+                                
+
+                                @endphp
+
+
+                                
+                                
+                            @endforeach
+
+                            
+
+
+                        @endif
+                            
+                        @endforeach
+
+                        @php echo $preco; @endphp
+                            
+                      
+
+                            
+                         
+                           
+                            
+                     
+
+                    </td>
+                    <td> 
+                        
+                        <form action="{{route('admin.pedido.destroy',['pedido'=> $item->cliente_id])}}" method="POST">
                             @csrf
                             @method('DELETE')
-                                <a href="{{route('admin.pedido.edit',['pedido'=> $item->id])}}"   class="btn btn-sm btn-primary">Editar</a>
+                                <a href="{{route('admin.pedidoproduto',['id_pedido'=> $item->id , 'id_cliente' => $item->cliente_id])}}"   class="btn btn-sm btn-primary">Editar</a>
                                 <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>
-                            
                         </form>
 
-
-    
-    
                     </td>
                 </tr>
                 @endforeach
@@ -51,7 +102,7 @@
         </tbody>        
     </table>
     <div class="">
-        {{$errors->links()}}
+        
 
     </div>
     

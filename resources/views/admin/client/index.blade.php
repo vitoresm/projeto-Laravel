@@ -45,13 +45,14 @@
                     <td>{{$item->numero}}</td>
                     <td>{{$item->complemento}}</td>
                     <td>
-                        <form action="{{route('admin.client.destroy',['client'=> $item->id])}}" method="POST">
+                     <form action="{{route('admin.cliente.destroy',['cliente'=> $item->id])}}" method="POST">
                             @csrf
                             @method('DELETE')
-                                <a href="{{route('admin.client.edit',['client'=> $item->id])}}"   class="btn btn-sm btn-primary">Editar</a>
+                                <a href="{{route('admin.cliente.edit',['cliente'=> $item->id])}}"   class="btn btn-sm btn-primary">Editar</a>
                                 <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>
                             
-                        </form>
+                        </form> 
+                    
 
 
     

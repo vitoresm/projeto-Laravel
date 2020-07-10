@@ -41,7 +41,7 @@
 
             
             <li class="nav-item">
-                <a class="nav-link @if(request()->is('admin/client')) active @endif"  href="{{route('admin.client.index')}}" role="tab" >Clientes</a>
+                <a class="nav-link @if(request()->is('admin/cliente')) active @endif"  href="{{route('admin.cliente.index')}}" role="tab" >Clientes</a>
 
             </li>
             <li class="nav-item">
@@ -58,7 +58,7 @@
             </h6>
             <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link  @if(request()->is('admin/client/create'))  active @endif"  href="{{route('admin.client.create')}}">
+                <a class="nav-link  @if(request()->is('admin/cliente/create'))  active @endif"  href="{{route('admin.cliente.create')}}">
                     cliente
                 </a>
             </li>

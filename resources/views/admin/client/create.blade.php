@@ -6,7 +6,7 @@
     
     <h1>Salvar cliente</h1>
 
-    <form action="{{route('admin.client.store')}}" method="POST">
+    <form action="{{route('admin.cliente.store')}}" method="POST">
     @csrf   
         <div class="form-group">
             

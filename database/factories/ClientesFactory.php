@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Client::class, function (Faker $faker) {
     return [
-        'nome' => "teste",
+        'nome' => $faker->firstName,
         'email' => $faker->email,
         'telefone' => $faker->phoneNumber,
         

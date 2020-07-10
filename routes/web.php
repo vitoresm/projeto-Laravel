@@ -25,9 +25,11 @@ Route::get('/site', function () {
    
         Route::resource('products', 'ProductController');
 
-        Route::resource('client', 'ClientController');
+        Route::resource('cliente', 'ClientController');
 
         Route::resource('pedido', 'PedidoController');
+
+        Route::get('pedidoproduto/{id_pedido}/{id_cliente}', 'PedidoController@pedidoUpdate')->name('pedidoproduto');
        
      });
      
