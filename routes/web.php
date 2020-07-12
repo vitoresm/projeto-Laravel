@@ -19,6 +19,8 @@ Route::get('/site', function () {
     return view('index');
 });
 
+Auth::routes();
+
 //Route::group(['middleware' => ['auth']], function(){
 
     Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
@@ -30,15 +32,23 @@ Route::get('/site', function () {
         Route::resource('pedido', 'PedidoController');
 
         Route::get('pedidoproduto/{id_pedido}/{id_cliente}', 'PedidoController@pedidoUpdate')->name('pedidoproduto');
-       
+
+        Route::post('pedidoproduto/destroy/{id}/{id_pedido}/{id_cliente}', 'PedidoController@pedidoProdutoDestroy')->name('pedidoprodutodelete');
+       //caso eu nao use javascrpt
      });
+
+    
      
+
   //});
   
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

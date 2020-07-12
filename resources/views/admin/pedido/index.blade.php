@@ -28,6 +28,11 @@
                     <td>{{$item->id}}</td>
                     <td>
                         @foreach ($clientes as $i)
+
+                        @php
+                        $preco = null;    
+                        @endphp
+
                             @if($item->cliente_id ==  $i->id) {{$i->nome}}
                             
                            
@@ -41,6 +46,7 @@
 
                       R$
                       @foreach ($produtospedido as $it)
+                       
                         
                         @if($item->id == $it->id_pedido)    
                             
@@ -52,7 +58,7 @@
                                 
                                 if($it->id_produto == $produto->id){
                                 
-                                $preco = $preco ?? 0;
+                            
 
                                 $preco = $preco + ($it->quantidade * $produto->preco);
                                 

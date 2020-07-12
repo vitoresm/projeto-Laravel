@@ -2,44 +2,100 @@
 
 @section('conteudo')
 
-<div >
+<div>
     
     <h1>Editar Pedido</h1>
-
-    <form  action="" method="POST">
-    @csrf 
-        <div class="form-group">
-            
+           
         <label for="">Editar Pedido do Cliente {{$cliente->nome}}</label>
 
-        @foreach ($pedidos as $item)
+        <table  class="table table-striped table-bordered table-sm">
+            <thead>
+                <tr>
 
-        <table>
-            <tr>
+                    <th>ID </th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor</th>
+                    <th>Ação</th>
 
-                <th>ID </th>
-                <th>Produto</th>
-                <th>Quantidade</th>
-                <th>Valor</th>
+                </tr>
+            <thead>
+            <tbody>
 
-            </tr>
+                @foreach ($pedidos as $item)
+                @php
+                    $preco = null;
+                @endphp
 
-            <tr>
-                <td>{{$item->id}}</td>
-                <td>
-                 irineru   
-                </td>
-                <td>{{$item->quantidade}}</td>
-                <td>R$</td>
-            </tr>
+                <tr>
+                    <td>{{$item->id}}</td>
+
+                    <td> 
+
+                    @foreach ($produtos as $i)
+
+
+                    @php
+
+                    if($i->id == $item->id_produto){
+
+                    $nome = null;
+
+                    $nome = $i->nome;
+                    }
+
+                    @endphp
+
+
+                    @endforeach
+                    {{$nome}}
+
+                    </td>
+
+                    <td>{{$item->quantidade}}</td>
+
+                    <td>R$
+                        @foreach ($produtos as $i)
+
+                        @php
+
+                        if ($i->id == $item->id_produto) {
+                            echo   $preco = $item->quantidade * $i->preco;te
+                        } 
+
+                        @endphp
+
+                        @endforeach
+
+
+                    </td>
+
+                                           
+                    <td>
+
+                        <form action="{{route('admin.pedidoprodutodelete',['id'=> $item->id, 'id_cliente' => $cliente->id, 'id_pedido' => $item->id_pedido ])}}" method="POST">
+                        @csrf
+
+                        <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+            
+                @endforeach
+
+            </tbody>
+
+
         </table>
             
-        @endforeach
+        
             
         
         </div>
 
-       
-    </form>    
+         
 </div>
 @endsection

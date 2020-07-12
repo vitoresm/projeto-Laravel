@@ -20,7 +20,7 @@ class PedidoController extends Controller
         $produtos = Product::all('id', 'nome', 'preco'); 
         $produtospedido = PedidoProduto::all(); 
         $clientes = Client::all('id','nome');       
-        $pedidos = Pedido::paginate(10);
+        $pedidos = Pedido::paginate(20);
        
         return view('admin.pedido.index', compact('pedidos', 'clientes', 'produtos', 'produtospedido'));
     
@@ -119,6 +119,8 @@ class PedidoController extends Controller
     public function update(Request $request, $id)
     {
         
+
+
      
 
     }
@@ -132,6 +134,20 @@ class PedidoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function pedidoProdutoDestroy($id, $id_pedido, $id_cliente)
+    {
+        //dd($id);
+
+        $pedido = PedidoProduto::findOrFail($id, );
+
+        $pedido->delete(); 
+
+        return redirect()->route('admin.pedidoproduto', [$id_pedido, $id_cliente]);
+
+        
+
     }
 
   
