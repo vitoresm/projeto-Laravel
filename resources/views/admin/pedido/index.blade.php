@@ -92,7 +92,7 @@
                     </td>
                     <td> 
                         
-                        <form action="{{route('admin.pedido.destroy',['pedido'=> $item->cliente_id])}}" method="POST">
+                        <form action="{{route('admin.pedido.destroy',['pedido'=> $item->id])}}" method="POST">
                             @csrf
                             @method('DELETE')
                                 <a href="{{route('admin.pedidoproduto',['id_pedido'=> $item->id , 'id_cliente' => $item->cliente_id])}}"   class="btn btn-sm btn-primary">Editar</a>

@@ -133,14 +133,19 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pedido = Pedido::findOrfail($id);
+        
+        $pedido->delete();
+
+        return redirect()->route('admin.pedido.index');
+
     }
 
     public function pedidoProdutoDestroy($id, $id_pedido, $id_cliente)
     {
         //dd($id);
 
-        $pedido = PedidoProduto::findOrFail($id, );
+        $pedido = PedidoProduto::findOrFail($id);
 
         $pedido->delete(); 
 

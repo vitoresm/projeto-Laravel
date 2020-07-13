@@ -3,9 +3,13 @@
 @section('conteudo')
 
 
-<div >
+<div class="container" >
     
-    <h1>Criar Produto</h1>
+    <div style="padding: 12px ">
+
+        <h5>Cadastrar produto</h5>
+
+    </div>
 
     <form action="{{route('admin.products.store')}}" method="POST">
         

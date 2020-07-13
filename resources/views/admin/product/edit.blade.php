@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('conteudo')
-<h1>Editar Produto</h1>
 
-<div >
+<div class="container">
+
+    <div style="padding: 12px ">
+
+        <h5>Editar produto</h5>
+
+    </div>
     
     <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST">
     @csrf
@@ -44,7 +49,7 @@
         <div class="form-group">
             
             <label for="">Preço</label>
-            <input type="text" name="preco" value="{{$product->preco}}"  class="form-control @error('preco') is-invalid" value="{{old('preco')}}" @enderror  >
+            <input type="text" name="preco" value="{{$product->preco}}"  class="form-control" @error('preco') class="is-invalid" value="{{old('preco')}}" @enderror  >
             @error('preco')
                 <div class="invalid-feedback">
                     
@@ -53,11 +58,14 @@
                 </div>
             @enderror
         </div>
-        
+
+
         <div class="form-group">
-            <button class="btn btn-lg" type="submit">editar produto</button>
+            <button class="btn btn-lg btn-primary" type="submit">Editar produto</button>
         </div>
         
+       
+ 
     </form>    
 </div>
 @endsection

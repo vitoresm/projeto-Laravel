@@ -9,11 +9,17 @@
      <!-- bootstrap -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
-     <!-- estilo do site -->
+    <!-- site JavaScript  -->
+    <script src="{{asset('js/app.js')}}"></script>
+     
+      <!-- estilo do site -->
+
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     
      <!-- Datatable css  -->
     <link rel="stylesheet" href="{{asset('css/datatable.css')}}">
+    
+    <script src="{{asset('js/bootsatrap-input-spinner.js')}}"></script>
 
 
 </head>
@@ -24,63 +30,71 @@
 
         <!-- menu lateral -->
 
-        <div class="col-2" style="position:;">
-            <nav class=" bg-light sidebar">
+        <div class="col-12  col-md-2" style="height: 85px">
+         
 
-            <ul class="nav flex-column">
-
-            <li class="nav-item">
-                <a class="nav-link"   href="{{route('home')}}">Inicio</a>
-            </li>
-
-            <h6 class="sidebar-heading px-3 mt-4">
+            <nav class=" bg-light sidebar">  
             
-                <span>Tabelas</span>
-                
-            </h6>
+              <div class="botao">
+              <img class="imgbotao" src="{{asset('storage/lista.png')}}" alt="" srcset="">
+              </div>
 
-            
-            <li class="nav-item">
-                <a class="nav-link @if(request()->is('admin/cliente')) active @endif"  href="{{route('admin.cliente.index')}}" role="tab" >Clientes</a>
 
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @if(request()->is('admin/products')) active @endif"  href="{{route('admin.products.index')}}" >
-                    Produtos
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @if(request()->is('admin/pedido')) active @endif"  href="{{route('admin.pedido.index')}}" >Pedidos</a>
-            </li>
 
-            <h6 class="sidebar-heading px-3 mt-4">
-            <span>Cadastros</span>
-            </h6>
-            <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link  @if(request()->is('admin/cliente/create'))  active @endif"  href="{{route('admin.cliente.create')}}">
-                    cliente
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @if(request()->is('admin/products/create'))  active @endif " href="{{route('admin.products.create')}}">
+            <div class="menu">
+                <ul class="nav  mr-auto flex-column">
+
+                    <li class="nav-item">
+                        <a class="nav-link"   href="{{route('home')}}">Inicio</a>
+                    </li>
+        
+                    <!--<h6 class="sidebar-heading px-3 mt-4">
+                    
+                        <span>Tabelas</span>
+                        
+                    </h6> -->
+        
+                    
+                    <li class="nav-item">
+                        <a class="nav-link @if(request()->is('admin/cliente')) active @endif"  href="{{route('admin.cliente.index')}}" role="tab" >Clientes</a>
+        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(request()->is('admin/products')) active @endif"  href="{{route('admin.products.index')}}" >
+                            Produtos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(request()->is('admin/pedido')) active @endif"  href="{{route('admin.pedido.index')}}" >Pedidos</a>
+                    </li>
+        
                    
-                    Produto
-
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @if(request()->is('admin/pedido/create')) active @endif " href="{{route('admin.pedido.create')}}">
-                    Fazer Pedido
-                </a>
-            </li>
-           
-            </ul>
+                    <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link  @if(request()->is('admin/cliente/create'))  active @endif"  href="{{route('admin.cliente.create')}}">
+                            Cadastar cliente
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(request()->is('admin/products/create'))  active @endif " href="{{route('admin.products.create')}}">
+                           
+                           Cadastar Produto
+        
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(request()->is('admin/pedido/create')) active @endif " href="{{route('admin.pedido.create')}}">
+                            Fazer Pedido
+                        </a>
+                    </li>
+                   
+                    </ul>
+            </div>
 
             </nav>
         </div>
         
-        <div class="col-10">
+        <div class="col-12 col-md-10">
 
             @yield('conteudo')
 
@@ -100,35 +114,59 @@
 
 
     <script>
+
+    
+$(document).ready(function(){
+
+$( '.botao').click(function(){
+   
+    $('.menu ul li').toggle();
+
+});
+
+});
     $("#add-produto").click(function () {
 
         $('#add').append(`  
-        <div  class="form-group col-md-8" >
+       
+        <div style="border: 1px solid #3490dc" class="div2 col-12 col-sm-4 col-md-6">    
+        <label >Produto</label>
 
-        <select class="custom-select mr-sm-2"  name="produto[]" >
-        @if(request()->is('admin/pedido/create'))
-        @foreach ($produtos as $produto)
-        <option value="{{$produto->id}}">{{$produto->nome}}</option>
+        <select class="custom-select"  name="produto[]" >
+            
+            @if(request()->is('admin/pedido/create'))
+            @foreach ($produtos as $produto)
+                
+                <option value="{{$produto->id}}">{{$produto->nome}}</option>
 
-        @endforeach
-
-        @endif 
+            @endforeach
+            @endif 
         </select>
 
-        </div>    
+          
 
-        <div class="form-group col-md-4">
-        <label for="">Quantidade</label>
-        <input name="quantidade[]" type="number" class="form-control">
+        <div class="form-group">
+             <label >Quantidade</label>
+             <input name="quantidade[]"   min="1" max="1000" type="number" class="form-control">
+        </div>
         </div>
 
-        </div> `);  
+        </div>
+         `);  
 
+         
+        
         });
+
+        $("input[type='number']").inputSpinner();
     </script> 
 
-     <!-- Datatable JavaScript  -->
-     <script src="{{asset('js/datatable.js')}}"></script>
+  
+
+     <!-- site JavaScript  -->
+     <script src="{{asset('js/site.js')}}"></script>
+
+   
   
   
     

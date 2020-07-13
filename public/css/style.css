@@ -36,20 +36,15 @@ ul{
     
  
 
-    /* menu lateral */
-    body{
-        padding-top: 16px;
-        
-    }
-    
+  
     
     .sidebar{
-        position: relative, fixed;
+        position: relative;
         top: 0;
         bottom: 0;
         left: 0;
         z-index: 1;
-        padding: 48px 0 0;
+        padding: 20px 0 0;
         box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
      
     }
@@ -65,3 +60,49 @@ ul{
     .sidebar .nav-link.active{
         color: #007bff;
     }
+
+    .div2 {
+       
+        padding: 14px;
+       
+
+    }
+.botao {
+    display: block;
+    cursor: pointer;
+}
+   
+.menu {
+    margin-bottom: 40px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.menu ul li {
+    width: 100%;
+    float: left;
+    position: relative;
+    display: none;
+}
+
+
+.imgbotao {
+    padding-left: 15px;
+}
+
+@media only screen and (min-width: 769px) {
+    .botao {
+        display: none;
+    }
+
+    .menu ul li{
+        width: 50%;
+        float: left;
+        position: relative;
+        display: block;
+    }
+
+    h6 {
+        display: block;
+    }
+}

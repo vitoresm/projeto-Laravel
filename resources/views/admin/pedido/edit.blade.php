@@ -60,7 +60,7 @@
                         @php
 
                         if ($i->id == $item->id_produto) {
-                            echo   $preco = $item->quantidade * $i->preco;te
+                            echo   $preco = $item->quantidade * $i->preco;
                         } 
 
                         @endphp
