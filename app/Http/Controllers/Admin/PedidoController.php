@@ -151,8 +151,6 @@ class PedidoController extends Controller
 
         return redirect()->route('admin.pedidoproduto', [$id_pedido, $id_cliente]);
 
-        
-
     }
 
   

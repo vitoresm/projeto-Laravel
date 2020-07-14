@@ -8,10 +8,12 @@ use App\Client;
 use App\Http\Requests\ClientRequest;
 class ClientController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     *  Retorna a View
      */
     public function index()
     {
@@ -25,6 +27,8 @@ class ClientController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * Retorna a view
      */
     public function create()
     {
@@ -36,6 +40,8 @@ class ClientController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * pega o POST para criar
      */
     public function store(ClientRequest $request)
     {
@@ -68,6 +74,7 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
 
         return view('admin.client.edit', compact('client'));
+    
     }
 
     /**
@@ -76,9 +83,12 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * pega o post para editar
      */
     public function update(Request $request, $id)
     {
+    
         $data = $request->all();
 
         $client = Client::findOrFail($id);
@@ -92,6 +102,8 @@ class ClientController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * Excluiu 
      */
     public function destroy($id)
     {

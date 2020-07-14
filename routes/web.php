@@ -15,13 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/site', function () {
-    return view('index');
-});
 
-Auth::routes();
 
-//Route::group(['middleware' => ['auth']], function(){
+
+Route::group(['middleware' => ['auth']], function(){
 
     Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
    
@@ -37,18 +34,16 @@ Auth::routes();
        //caso eu nao use javascrpt
      });
 
+     Route::get('/site', function () {
+        return view('index');
+    })->name('site');
     
      
 
-  //});
+  });
   
 
+  Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-
-//Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('home');
+  

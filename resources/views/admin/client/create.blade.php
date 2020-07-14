@@ -1,16 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('conteudo')
 
-<div class="container" >
-    
-    <div style="padding: 14px ">
+<div class="container">
 
-        <h5>Cadastar Cliente</h5>
+    <div class="card">
+   
+    <div class="card-header">Cadastar Cliente</div>
 
-    </div>
-
-    <div class="">
+    <div class="card-body">
     
         <form action="{{route('admin.cliente.store')}}" method="POST">
             @csrf   
@@ -156,6 +154,8 @@
                 </div>
                 
             </form>  
-    </div>  
+    </div> 
+   </div> 
+
 </div>
 @endsection
