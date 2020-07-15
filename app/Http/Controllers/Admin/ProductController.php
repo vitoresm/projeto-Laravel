@@ -10,15 +10,6 @@ use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
 
-    private $product;
-
-    public function __construct(Product $product)
-    {
-
-        $this->product = $product;
-
-    }
-
 
 
     /**
@@ -28,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->paginate(10);
+        $products = Product::all();
 
         return view('admin.product.index', compact('products'));
     }

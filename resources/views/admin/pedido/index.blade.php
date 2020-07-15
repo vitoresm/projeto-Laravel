@@ -9,108 +9,44 @@
 
 <div class="container">
 
-    <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+    <table id="datatable" class="table table-striped table-bordered table-sm" cellspacing="0"
     width="100%" >
         <thead>
             <tr>
                
                 <th>ID</th>
-                <th>Nome do Cliente</th>
-                <th>Valor Total</th>
+                <th>Nome do cliente</th>
+                <th>Produtos do pedido</th>
+                <th>Valor total</th>
                 <th>Ação</th>
                
             </tr>
         </thead>
         <tbody>
             
-                @foreach ($pedidos as $item)
+            @foreach ($pedidos as $item)
                 <tr>
                     <td>{{$item->id}}</td>
-                    <td>
-                        @foreach ($clientes as $i)
-
-                        @php
-                        $preco = null;    
-                        @endphp
-
-                            @if($item->cliente_id ==  $i->id) {{$i->nome}}
-                            
-                           
-                            @endif 
-                       
-                         @endforeach
-                    
-
-                    </td>
-                    <td>
-
-                      R$
-                      @foreach ($produtospedido as $it)
-                       
-                        
-                        @if($item->id == $it->id_pedido)    
-                            
-
-
-                            @foreach ($produtos as $produto)
-                                
-                                @php 
-                                
-                                if($it->id_produto == $produto->id){
-                                
-                            
-
-                                $preco = $preco + ($it->quantidade * $produto->preco);
-                                
-                                }
-                                
-
-                                @endphp
-
-
-                                
-                                
-                            @endforeach
-
-                            
-
-
-                        @endif
-                            
-                        @endforeach
-
-                        @php echo $preco; @endphp
-                            
-                      
-
-                            
-                         
-                           
-                            
-                     
-
-                    </td>
+                    <td>{{$item->buscarCliente->nome}}</td>
+                    <td>{{count($item->buscarPedidoProdutos)}}</td>
+                    <td>{{$item->total_Pedido}}</td>                    
                     <td> 
-                        
                         <form action="{{route('admin.pedido.destroy',['pedido'=> $item->id])}}" method="POST">
+                        
                             @csrf
                             @method('DELETE')
                                 <a href="{{route('admin.pedidoproduto',['id_pedido'=> $item->id , 'id_cliente' => $item->cliente_id])}}"   class="btn btn-sm btn-primary">Editar</a>
                                 <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>
+                        
                         </form>
-
                     </td>
                 </tr>
-                @endforeach
+            @endforeach
     
               
           
         </tbody>        
     </table>
-    <div class="">
-        
-
-    </div>
     
     
   

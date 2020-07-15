@@ -16,13 +16,28 @@ class PedidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $produtos = Product::all('id', 'nome', 'preco'); 
-        $produtospedido = PedidoProduto::all(); 
-        $clientes = Client::all('id','nome');       
-        $pedidos = Pedido::paginate(20);
-       
-        return view('admin.pedido.index', compact('pedidos', 'clientes', 'produtos', 'produtospedido'));
+    {   
+
+        
+        $pedidos = Pedido::with(['buscarCliente', 'buscarPedidoProdutos', 'buscarPedidoProdutos.buscarProduto'])->get();
+    
+
+      // dd($pedidos);
+        foreach($pedidos as $item){
+            $totalPPedido = null;
+           // dd($item->buscarPedidoProdutos);
+
+            foreach($item->buscarPedidoProdutos as $pedidoProduto){
+
+               // dd($pedidoProduto->buscarProduto);
+
+                $totalPPedido = $totalPPedido + $pedidoProduto->quantidade * $pedidoProduto->buscarProduto->preco;
+
+            }
+                $item->total_Pedido = $totalPPedido;
+        }
+
+        return view('admin.pedido.index', compact('pedidos'));
     
     }
 
@@ -96,8 +111,7 @@ class PedidoController extends Controller
      */
     public function pedidoUpdate($id_pedido, $id_cliente)
     {
-        //dd($id_cliente);
-
+       
         $cliente = Client::findOrFail($id_cliente);
 
         $pedidos = PedidoProduto::where(['id_pedido' => $id_pedido])->get(); 

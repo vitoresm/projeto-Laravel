@@ -9,12 +9,7 @@
 
 <div class="container">
 
-    <div class="card-body">
-        <h5>Exibindo {{$products->count() }} clientes de {{$products->total()}} ({{$products->firstItem()}} a {{$products->lastItem()}})</h5>
-    </div>
-
-    <table  id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
-  >
+    <table  id="datatable" class="table table-striped table-bordered table-sm" cellspacing="0">
         <thead>
             <tr>
                 <th>ID</th>
@@ -54,21 +49,10 @@
            
           
         </tbody>
-        {{-- <tfoot>
-            <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço </th>
-                <th>Ação</th>
-            </tr>
-        </tfoot> --}}
+    
     </table>
     
-    <div>
-        {{$products->links()}}
-
-    </div>
-  
+   
     
 </div>
     

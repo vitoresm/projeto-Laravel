@@ -12,5 +12,9 @@ $(document).ready(function(){
     
  });
     
+// data table
+ $(document).ready( function () {
+    $('#datatable ').DataTable();
+} );
 
  
