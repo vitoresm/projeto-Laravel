@@ -43,15 +43,22 @@
                 </div>
                 
             
+                <label for="">Preço</label>
                 
-                <div class="form-group">
-                    <label for="">Preço</label>
-                    <input type="text" name="preco" id="" class="form-control @error('preco') is-invalid @enderror" value="{{old('preco')}}">
+                <div class="input-group form-group mb-3">
+                   
+              
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">R$</span>
+                    </div>
+
+                    <input type="number" step="0.01"  class="form-control" name="preco" onKeyUp="mascaraMoeda(this, event)"  value="">
+                    
                     @error('preco')
                     <div class="invalid-feedback">
-                    {{$message}}
+                        {{$message}}
                     </div>
-                @enderror
+                     @enderror
                 </div>
                 
                 

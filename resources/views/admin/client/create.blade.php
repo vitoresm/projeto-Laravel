@@ -6,7 +6,7 @@
 
     <div class="card">
    
-    <div class="card-header">Cadastar Cliente</div>
+    <div class="card-header h5">Cadastar Cliente</div>
 
     <div class="card-body">
     

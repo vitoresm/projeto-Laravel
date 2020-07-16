@@ -11,7 +11,7 @@
 <div class="container" style="" >
     
     <div class="card">
-    <div class="card-header">Fazer Pedido</div>
+    <div class="card-header h5">Fazer Pedido</div>
     
 
     <div class="card-body">

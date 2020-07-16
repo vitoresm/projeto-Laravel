@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('descricao');
-            $table->decimal('preco',10,2);
+            $table->decimal('preco', 24,2);
             $table->timestamps();
         });
     }
@@ -30,5 +30,5 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
-    }
+    }   
 }

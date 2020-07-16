@@ -18,6 +18,7 @@ class PedidoController extends Controller
     public function index()
     {   
 
+
         
         $pedidos = Pedido::with(['buscarCliente', 'buscarPedidoProdutos', 'buscarPedidoProdutos.buscarProduto'])->get();
     
@@ -108,20 +109,20 @@ class PedidoController extends Controller
      *
      * @param  int  $id_pedido, $id_cliente
      * @return \Illuminate\Http\Response
+     *  
+     *      PEGAR TODOS OS PEDIDO PRODUTO DE UM PEDIDO
      */
     public function pedidoUpdate($id_pedido, $id_cliente)
     {
        
-        $cliente = Client::findOrFail($id_cliente);
-
-        $pedidos = PedidoProduto::where(['id_pedido' => $id_pedido])->get(); 
-    
-        //dd($pedidos);
-        $produtos = product::all();
-
-        return view('admin.pedido.edit', compact('cliente', 'pedidos', 'produtos'));
+      
+        $pedidoProduto = PedidoProduto::Where('id_pedido', $id_pedido)->with(['buscarPedidos.buscarCliente','buscarProduto'])->get();
+                              
+        return view('admin.pedido.edit', compact('pedidoProduto'));
 
     }
+
+
 
     /**
      * Update the specified resource in storage.
