@@ -116,9 +116,21 @@ class PedidoController extends Controller
     {
        
       
-        $pedidoProduto = PedidoProduto::Where('id_pedido', $id_pedido)->with(['buscarPedidos.buscarCliente','buscarProduto'])->get();
-                              
-        return view('admin.pedido.edit', compact('pedidoProduto'));
+        $pedidoProdutos = PedidoProduto::Where('id_pedido', $id_pedido)->with(['buscarPedidos.buscarCliente','buscarProduto'])->get();
+         
+       //dd($pedidoProduto);
+        
+        foreach($pedidoProdutos as $item){
+            $valorProdutos = 0;
+           // dd($item->quantidade);
+            
+             $valorProdutos = $item->quantidade * $item->buscarProduto->preco;
+
+             $item->valor_produtos = $valorProdutos;
+        }
+
+
+        return view('admin.pedido.edit', compact('pedidoProdutos'));
 
     }
 

@@ -6,7 +6,7 @@
     
    <div class="card" >
            
-        <div class="card-header h4">Editar Pedido do Cliente {{$cliente->nome}}</div>
+        <div class="card-header h4">Editar Pedido do Cliente</div>
 
         <div class="card-body">
                 <table  class="table table-striped table-bordered table-sm">
@@ -23,58 +23,22 @@
                     <thead>
                     <tbody>
 
-                        @foreach ($pedidos as $item)
-                        @php
-                            $preco = null;
-                        @endphp
-
+                        @foreach ($pedidoProdutos as $item)
+                        
                         <tr>
+
                             <td>{{$item->id}}</td>
 
-                            <td> 
-
-                            @foreach ($produtos as $i)
-
-
-                            @php
-
-                            if($i->id == $item->id_produto){
-
-                            $nome = null;
-
-                            $nome = $i->nome;
-                            }
-
-                            @endphp
-
-
-                            @endforeach
-                            {{$nome}}
-
-                            </td>
+                            <td>{{$item->buscarProduto->nome}}</td>
 
                             <td>{{$item->quantidade}}</td>
 
-                            <td>R$
-                                @foreach ($produtos as $i)
-
-                                @php
-
-                                if ($i->id == $item->id_produto) {
-                                    echo   $preco = $item->quantidade * $i->preco;
-                                } 
-
-                                @endphp
-
-                                @endforeach
-
-
-                            </td>
+                            <td>{{$item->valor_produtos}}</td>
 
                                                 
                             <td>
 
-                                <form action="{{route('admin.pedidoprodutodelete',['id'=> $item->id, 'id_cliente' => $cliente->id, 'id_pedido' => $item->id_pedido ])}}" method="POST">
+                                <form action="{{route('admin.pedidoprodutodelete',['id'=> $item->id, 'id_cliente' => $item->buscarPedidos->buscarCliente->id, 'id_pedido' => $item->id_pedido ])}}" method="POST">
                                 @csrf
 
                                 <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>
