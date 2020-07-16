@@ -44,8 +44,6 @@
                 
                 </div>
                 
-            
-                
                 <div class="form-group">
                     
                     <label for="">Preço</label>
@@ -59,13 +57,10 @@
                     @enderror
                 </div>
 
-
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary" type="submit">Editar</button>
                 </div>
-                
-            
-        
+                        
             </form>
         </div>
     </div>    

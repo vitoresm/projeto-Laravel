@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index2');
 });
 
 
@@ -34,16 +34,12 @@ Route::group(['middleware' => ['auth']], function(){
        //caso eu nao use javascrpt
      });
 
-     Route::get('/site', function () {
-        return view('index');
-    })->name('site');
-    
-     
+     Route::get('/inicio', 'HomeController@index')->name('site');
 
   });
   
 
   Auth::routes();
 
-  Route::get('/home', 'HomeController@index')->name('home');
+  
   

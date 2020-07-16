@@ -26,25 +26,17 @@
                         @foreach ($pedidoProdutos as $item)
                         
                         <tr>
-
                             <td>{{$item->id}}</td>
-
                             <td>{{$item->buscarProduto->nome}}</td>
-
                             <td>{{$item->quantidade}}</td>
-
-                            <td>{{$item->valor_produtos}}</td>
-
-                                                
+                            <td>{{$item->valor_produtos}}</td>              
                             <td>
-
                                 <form action="{{route('admin.pedidoprodutodelete',['id'=> $item->id, 'id_cliente' => $item->buscarPedidos->buscarCliente->id, 'id_pedido' => $item->id_pedido ])}}" method="POST">
                                 @csrf
 
                                 <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>
 
                                 </form>
-
                             </td>
 
                         </tr>
@@ -53,14 +45,11 @@
 
                     </tbody>
 
-
                 </table>
             
-        </div>
-            
+        </div>            
         
         </div>
-
          
 </div>
 @endsection

@@ -42,11 +42,9 @@
                 
                 </div>
                 
-            
                 <label for="">Preço</label>
                 
-                <div class="input-group form-group mb-3">
-                   
+                <div class="input-group form-group mb-3">    
               
                     <div class="input-group-prepend">
                         <span class="input-group-text">R$</span>
@@ -61,8 +59,6 @@
                      @enderror
                 </div>
                 
-                
-
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary" type="submit">salvar</button>
                 </div>

@@ -48,35 +48,35 @@
                 </h6> -->
     
                 
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/cliente')) active @endif"  href="{{route('admin.cliente.index')}}" role="tab" >Clientes</a>
+                <li class="nav-item  @if(request()->is('admin/cliente')) active @endif">
+                    <a class="nav-link list-unstyled"  href="{{route('admin.cliente.index')}}" role="tab" >Clientes</a>
     
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/products')) active @endif"  href="{{route('admin.products.index')}}" >
+                <li class="nav-item  @if(request()->is('admin/products')) active @endif">
+                    <a class="nav-link"  href="{{route('admin.products.index')}}" >
                         Produtos
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/pedido')) active @endif"  href="{{route('admin.pedido.index')}}" >Pedidos</a>
+                <li class="nav-item @if(request()->is('admin/pedido')) active @endif">
+                    <a class="nav-link "  href="{{route('admin.pedido.index')}}" >Pedidos</a>
                 </li>
     
             
         
-                <li class="nav-item">
-                    <a class="nav-link  @if(request()->is('admin/cliente/create'))  active @endif"  href="{{route('admin.cliente.create')}}">
+                <li class="nav-item @if(request()->is('admin/cliente/create'))  active @endif">
+                    <a class="nav-link  "  href="{{route('admin.cliente.create')}}">
                         Cadastar cliente
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/products/create'))  active @endif " href="{{route('admin.products.create')}}">
+                <li class="nav-item  @if(request()->is('admin/products/create'))  active @endif">
+                    <a class="nav-link" href="{{route('admin.products.create')}}">
                     
                     Cadastar Produto
     
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link @if(request()->is('admin/pedido/create')) active @endif " href="{{route('admin.pedido.create')}}">
+                <li class="nav-item @if(request()->is('admin/pedido/create')) active @endif">
+                    <a class="nav-link  " href="{{route('admin.pedido.create')}}">
                         Fazer Pedido
                     </a>
                 </li>

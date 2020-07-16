@@ -129,9 +129,7 @@
                     
                     @enderror
                 
-                </div>
-        
-                
+                </div>        
                 
                 <div class="form-group">
                     
@@ -146,8 +144,7 @@
         
                     @enderror
                 
-                </div>
-                
+                </div>    
             
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Salvar Cliente</button>

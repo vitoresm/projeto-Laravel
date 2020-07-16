@@ -10,7 +10,7 @@
 
    <div class="card">
 
-        <div class="card-header">Tabela Pedidos</div>
+        <div class="card-header h5">Tabela Pedidos</div>
         
         <div class="card-body">
             <table id="datatable" class="display table table-striped table-bordered " width="100%">
@@ -41,8 +41,7 @@
                                     @method('DELETE')
                                         <a href="{{route('admin.pedidoproduto',['id_pedido'=> $item->id , 'id_cliente' => $item->cliente_id])}}"   class="btn btn-sm btn-primary">Editar</a>
                                         <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>                               
-                                </form>
-        
+                                </form>       
                             </td>
                         </tr>            
                     @endforeach

@@ -129,9 +129,7 @@
                         
                         @enderror
                     
-                    </div>
-            
-                    
+                    </div>               
                     
                     <div class="form-group">
                         
@@ -150,7 +148,9 @@
                     
                 
                     <div class="form-group">
+                       
                         <button class="btn btn-primary" rows="2" type="submit">Editar</button>
+                    
                     </div>
                         
             </form> 

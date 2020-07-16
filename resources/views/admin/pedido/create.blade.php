@@ -1,19 +1,12 @@
-
-
-
 @extends('layouts.app2')
 
-
-
 @section('conteudo')
-
 
 <div class="container" style="" >
     
     <div class="card">
     <div class="card-header h5">Fazer Pedido</div>
     
-
     <div class="card-body">
         <form action="{{route('admin.pedido.store')}}" method="POST">
             @csrf
@@ -28,8 +21,6 @@
             </div> 
             
             <div class="container">
-    
-                
             
                     <div  id="add" class="row"   >
                         
@@ -40,9 +31,8 @@
                                 <select class="custom-select"  name="produto[]" >
                                    
                                     @foreach ($produtos as $produto)
-                                <option value="{{$produto->id}}">{{$produto->nome}} | R$ {{$produto->preco}}</option>
-                                       
-            
+                                
+                                        <option value="{{$produto->id}}">{{$produto->nome}} | R$ {{$produto->preco}}</option>        
     
                                     @endforeach
     
@@ -58,7 +48,6 @@
     
                     </div> 
                  
-    
                </div>    
     
               <div style="padding: 10px">
@@ -66,14 +55,10 @@
               </div>    
             
             </div>
-    
            
             <div class="form-group">           
     
-               
-            </div>
-    
-            
+            </div>        
       
             <button type="submit" class="btn btn-primary">Efetuar pedido</button>
     
@@ -81,9 +66,6 @@
     </div>
     </div>    
 </div>
-
-
-
 
 @endsection
 
