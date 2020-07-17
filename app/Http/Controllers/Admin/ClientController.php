@@ -17,10 +17,11 @@ class ClientController extends Controller
      */
     public function index()
     {
+
         $client = Client::all();
 
-        //dd($client);
         return view('admin.client.index', compact('client'));
+
     }
 
     /**
@@ -32,7 +33,9 @@ class ClientController extends Controller
      */
     public function create()
     {
+    
         return view('admin.client.create');
+    
     }
 
     /**

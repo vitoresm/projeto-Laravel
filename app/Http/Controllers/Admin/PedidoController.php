@@ -17,25 +17,20 @@ class PedidoController extends Controller
      */
     public function index()
     {   
-
-
-        
+       
         $pedidos = Pedido::with(['buscarCliente', 'buscarPedidoProdutos', 'buscarPedidoProdutos.buscarProduto'])->get();
-    
 
-      // dd($pedidos);
         foreach($pedidos as $item){
             $totalPPedido = null;
-           // dd($item->buscarPedidoProdutos);
 
             foreach($item->buscarPedidoProdutos as $pedidoProduto){
-
-               // dd($pedidoProduto->buscarProduto);
 
                 $totalPPedido = $totalPPedido + $pedidoProduto->quantidade * $pedidoProduto->buscarProduto->preco;
 
             }
-                $item->total_Pedido = $totalPPedido;
+
+            $item->total_Pedido = $totalPPedido;
+
         }
 
         return view('admin.pedido.index', compact('pedidos'));
@@ -52,6 +47,7 @@ class PedidoController extends Controller
 
         $clients = Client::all();
         $produtos = product::all(); 
+
         return view('admin.pedido.create', compact('clients', 'produtos'));
         
     }
@@ -65,29 +61,19 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
        
-
-
-
         $data= $request->all('cliente_id');
-
         
         $salvar = Pedido::create($data);
 
-        //dd($salvar);
-        
         foreach($request->produto as $k => $id_produto){
             
             $pedido_produto = new PedidoProduto;
-
             $pedido_produto->id_pedido  = $salvar->id;
             $pedido_produto->id_produto = $id_produto;
             $pedido_produto->quantidade = $request->quantidade[$k];
-            //dd($pedido_produto);
             $pedido_produto->save();
-
-            
+    
         }
-
 
         return redirect()->route('admin.pedido.index');
 
@@ -114,21 +100,16 @@ class PedidoController extends Controller
      */
     public function pedidoUpdate($id_pedido, $id_cliente)
     {
-       
-      
+     
         $pedidoProdutos = PedidoProduto::Where('id_pedido', $id_pedido)->with(['buscarPedidos.buscarCliente','buscarProduto'])->get();
          
-       //dd($pedidoProduto);
-        
         foreach($pedidoProdutos as $item){
             $valorProdutos = 0;
-           // dd($item->quantidade);
             
-             $valorProdutos = $item->quantidade * $item->buscarProduto->preco;
+            $valorProdutos = $item->quantidade * $item->buscarProduto->preco;
 
-             $item->valor_produtos = $valorProdutos;
+            $item->valor_produtos = $valorProdutos;
         }
-
 
         return view('admin.pedido.edit', compact('pedidoProdutos'));
 
@@ -146,10 +127,6 @@ class PedidoController extends Controller
     public function update(Request $request, $id)
     {
         
-
-
-     
-
     }
 
     /**
@@ -180,5 +157,9 @@ class PedidoController extends Controller
 
     }
 
+    public function formartPreco($preco){
+        
+        return str_replace(['.', ','], ['', '.'], $preco)
+    }
   
 }

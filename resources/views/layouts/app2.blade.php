@@ -37,8 +37,8 @@
         <ul class="list-unstyled components mb-5">
             
 
-                <li class="nav-item">
-                    <a class="nav-link"   href="{{route('site')}}">Inicio</a>
+                <li class="nav-item @if(request()->is('inicio')) active @endif ">
+                    <a class="nav-link"   href="{{route('site')}}">Início</a>
                 </li>
     
                 <!--<h6 class="sidebar-heading px-3 mt-4">
