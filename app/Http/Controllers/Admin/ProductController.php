@@ -48,6 +48,8 @@ class ProductController extends Controller
 
         $data= $request->all();
 
+        $data['preco'] = str_replace(['.', ','], ['', '.'], $_POST['preco']);
+
         $salvar = Product::create($data);
         
         return redirect()->route('admin.products.index');
@@ -103,11 +105,22 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $produto = Product::findOrFail($id);
-        $produto->delete(); 
 
+        $produto = Product::with('buscarProdutosPedido')->find($id);
 
+        if(count($produto->buscarProdutosPedido)){
+            
+            alert()->error('Erro','Não foi possível excluir esse produto, pois está relacionado a algum pedido!');
+
+        } else {
+           
+            $produto->delete();
+        
+        }
+        
         return redirect()->route('admin.products.index');
 
     }
+
+   
 }

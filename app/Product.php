@@ -8,9 +8,9 @@ class Product extends Model
 {
     protected $fillable = ['nome', 'descricao', 'preco'];
 
-    public function pedido(){
+    public function buscarProdutosPedido(){
         
-        $this->belongsToMany(Pedidio::class);
+       return $this->hasMany('App\PedidoProduto', 'id_produto' );
 
     }
 }

@@ -50,7 +50,7 @@
                         <span class="input-group-text">R$</span>
                     </div>
 
-                    <input type="number" step="0.01"  class="form-control" name="preco" onKeyUp="mascaraMoeda(this, event)"  value="">
+                    <input type="text"  class="form-control" name="preco" onKeyUp="mascaraMoeda(this, event)"  />
                     
                     @error('preco')
                     <div class="invalid-feedback">

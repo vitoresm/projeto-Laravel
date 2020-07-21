@@ -8,9 +8,9 @@ class Client extends Model
 {
     protected $fillable = ['nome', 'telefone', 'email', 'estado', 'cidade', 'bairro', 'rua', 'numero', 'complemento'];
 
-    public function pedido(){
+    public function buscarPedidos(){
         
-        return $this->belongTo(Pedidio::class);
+        return $this->hasMany('App\Pedido', 'cliente_id');
     
     }
 

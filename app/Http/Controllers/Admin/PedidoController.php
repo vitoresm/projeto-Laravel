@@ -137,9 +137,16 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        $pedido = Pedido::findOrfail($id);
+       
+        $pedidoProdutos = Pedido::with(['buscarPedidoProdutos'])->get()->find($id);
         
-        $pedido->delete();
+        foreach($pedidoProdutos->buscarPedidoProdutos as $item ){
+        
+            $item->delete();
+
+        }
+
+        $pedidoProdutos->delete();
 
         return redirect()->route('admin.pedido.index');
 
@@ -157,9 +164,6 @@ class PedidoController extends Controller
 
     }
 
-    public function formartPreco($preco){
-        
-        return str_replace(['.', ','], ['', '.'], $preco)
-    }
+    
   
 }

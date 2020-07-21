@@ -1,4 +1,7 @@
-
+function pergunta(){ 
+  // retorna true se confirmado, ou false se cancelado
+  return confirm('Tem certeza que deseja excluir esse item?');
+}
 
 
 // data table
@@ -25,6 +28,33 @@
             }
         }
     });
+
+
+
+
+   
+ //  modal personalizado
+
+      $(document).ready(function(){
+        $('a[data-confirmar]').click(function(ev){
+          
+          var href = $(this).data('href');
+
+          console.log(href);
+
+          if(!$('#confirm-delete').length){
+            $('body').append('<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-danger text-white">EXCLUIR ITEM<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">Tem certeza de que deseja excluir o item selecionado?</div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button><a class="btn btn-danger text-white" id="dataComfirmOK">Apagar</a></div></div></div></div>');
+          }
+          
+          $('#dataComfirmOK').attr('href', href);
+
+              $('#confirm-delete').modal({show: true});
+          
+              return false;
+          
+        });
+      });
+
 } );
 
 
@@ -36,7 +66,7 @@ String.prototype.reverse = function(){
     var tecla = (!evento) ? window.event.keyCode : evento.which;
     var valor  =  campo.value.replace(/[^\d]+/gi,'').reverse();
     var resultado  = "";
-    var mascara = "##.###.###.##".reverse();
+    var mascara = "##.###.###,##".reverse();
     for (var x=0, y=0; x<mascara.length && y<valor.length;) {
       if (mascara.charAt(x) != '#') {
         resultado += mascara.charAt(x);
@@ -49,3 +79,4 @@ String.prototype.reverse = function(){
     }
     campo.value = resultado.reverse();
   }
+

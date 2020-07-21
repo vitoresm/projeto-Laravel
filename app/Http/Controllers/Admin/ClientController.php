@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Client;
+use App\Pedido;
+
 use App\Http\Requests\ClientRequest;
 class ClientController extends Controller
 {
@@ -110,10 +112,20 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $client = client::findOrFail($id);
-        $client->delete(); 
 
+        $cliente = Client::with('buscarPedidos')->find($id);
+
+        if(count($cliente->buscarPedidos)){
+            
+            alert()->error('Erro','Não foi possível excluir esse usuário, pois ele possui pedidos');
+
+        } else {
+           
+            $cliente->delete();
+        
+        }
 
         return redirect()->route('admin.cliente.index');
+    
     }
 }

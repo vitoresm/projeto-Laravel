@@ -40,7 +40,8 @@
                                     @csrf
                                     @method('DELETE')
                                         <a href="{{route('admin.pedidoproduto',['id_pedido'=> $item->id , 'id_cliente' => $item->cliente_id])}}"   class="btn btn-sm btn-primary">Editar</a>
-                                        <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>                               
+                                        <input type="submit" onclick='return pergunta();' value=Apagar   class="btn btn-sm btn-danger" >
+                              
                                 </form>       
                             </td>
                         </tr>            

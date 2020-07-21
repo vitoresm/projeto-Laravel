@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index2');
-});
-
 
 
 
 Route::group(['middleware' => ['auth']], function(){
+
+    Route::get('/', 'HomeController@index')->name('site');
 
     Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
    
@@ -34,7 +32,7 @@ Route::group(['middleware' => ['auth']], function(){
        //caso eu nao use javascrpt
      });
 
-     Route::get('/inicio', 'HomeController@index')->name('site');
+     
 
   });
   

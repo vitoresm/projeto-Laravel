@@ -23,6 +23,8 @@
 <body>
      
     <body>
+       
+        @include('sweetalert::alert')
 		
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
@@ -80,39 +82,20 @@
                         Fazer Pedido
                     </a>
                 </li>
-            
-            
-                <!-- Authentication Links -->
-                @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li> 
-                @if(Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-                @else
+              
                 <li class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Usuario: {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                   
                         
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                            @csrf
+                            <a class="nav-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             Sair
                         </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
                         </form>
 
-                    </div>
                 </li>
-                    @endguest
-            
+                  
         </ul>
 
     	</nav>
@@ -180,6 +163,7 @@
                 
                 });
             </script> 
+
             
         <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.dataTables.min.css')}}">
             
@@ -187,6 +171,8 @@
             
        <!--  sidebar -->
         <script src="{{asset('js/menu.js')}}"></script>
+
+            
 
        
 </body>

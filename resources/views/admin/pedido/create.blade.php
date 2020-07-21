@@ -28,11 +28,11 @@
                             
                             <div>
                                 <label >Produto</label>
-                                <select class="custom-select"  name="produto[]" >
+                                <select class="custom-select" name="produto[]" >
                                    
                                     @foreach ($produtos as $produto)
                                 
-                                        <option value="{{$produto->id}}">{{$produto->nome}} | R$ {{$produto->preco}}</option>        
+                                         <option data-preco="11" value="{{$produto->id}}" onclick="chamaJavaScript(this)">{{$produto->nome}} | R$ {{$produto->preco}}</option>        
     
                                     @endforeach
     
@@ -41,7 +41,7 @@
                                    
                             <div class="form-group ">
                                 <label >Quantidade</label>
-                                <input type="number" id="spinner" class="form-control" name="quantidade[]"  min="1" max="1000" step="1" required data-decimals="0"/>
+                            <input type="number" id="spinner" data-quantidade class="form-control" value="" onclick="chamaJavaScript(this)" name="quantidade[]"  min="1" max="1000" step="1" required data-decimals="0"/>
                             </div>
                             
                         </div>

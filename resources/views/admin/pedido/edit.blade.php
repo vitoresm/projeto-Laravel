@@ -34,7 +34,7 @@
                                 <form action="{{route('admin.pedidoprodutodelete',['id'=> $item->id, 'id_cliente' => $item->buscarPedidos->buscarCliente->id, 'id_pedido' => $item->id_pedido ])}}" method="POST">
                                 @csrf
 
-                                <button type="submit" class="btn btn-sm btn-danger" >Apagar</button>
+                                <input type="submit" onclick='return pergunta();' value=Apagar   class="btn btn-sm btn-danger" >
 
                                 </form>
                             </td>
