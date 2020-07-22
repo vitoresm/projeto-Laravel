@@ -116,19 +116,20 @@
     
    
   
-      
+        
   
 
    
   
     <!-- Bootstrap JavaScript -->
     <script src="{{asset('js/app.js')}}"></script>
-
    
     <script src="{{asset('js/bootsatrapinputpinner.js')}}"></script>
 
     <!-- JavaScript -->
     <script src="{{asset('js/site.js')}}"></script>
+
+    <script src="{{asset('js/tabelateste.js')}}"></script>
 
     <script>            
         
@@ -163,11 +164,14 @@
                 
                 });
             </script> 
+     
+         
 
-            
         <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.dataTables.min.css')}}">
             
         <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+
+        <script src="https://cdn.datatables.net/plug-ins/1.10.21/sorting/currency.js"></script>
             
        <!--  sidebar -->
         <script src="{{asset('js/menu.js')}}"></script>

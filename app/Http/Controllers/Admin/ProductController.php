@@ -91,6 +91,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        $data['preco'] = str_replace(['.', ','], ['', '.'], $_POST['preco']);
         $product = Product::find($id);
         $product->update($data);
 

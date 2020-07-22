@@ -13,7 +13,7 @@
         <div class="card-header h5">Tabela Pedidos</div>
         
         <div class="card-body">
-            <table id="datatable" class="display table table-striped table-bordered " width="100%">
+            <table id="tabelaFormatada" class="display table table-striped table-bordered " width="100%">
                 <thead>
                     <tr>
                        

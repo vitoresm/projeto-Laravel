@@ -9,7 +9,7 @@
         <div class="card-header h4">Editar Pedido do Cliente</div>
 
         <div class="card-body">
-                <table  class="table table-striped table-bordered table-sm">
+                <table id="tabelaFormatada" class="table table-striped table-bordered table-sm">
                     <thead>
                         <tr>
 

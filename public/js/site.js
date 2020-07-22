@@ -6,11 +6,34 @@ function pergunta(){
 
 // data table
  $(document).ready( function () {
+  $('#tableProduto').DataTable({
+    
+    responsive:true,
+    data: '',
+    columnDefs: [ 
+                { "width": "7%", "targets": 3 }, //defini manualmente o tamanho da coluna
+                {"render": function(data){       //responsavel por 'renderizar' a coluna que vc deseja aplicando o filtro R$
+        return parseFloat(data).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        },"targets": 3
+      }
+      ],    
+      columns: [
+               { title: "ID" },
+               { title: "Nome" },
+               { title: "Descrição" },
+               { title: "Valor" },
+               { title: "Ação" }            
+               ] 
+  });
+
+
     $('#datatable ').DataTable({
        
         "bJQueryUI": true,
         "scrollX": true,
-        "oLanguage": {
+        "language": {
+            "decimal": ",",
+            "thousands": ".",
             "sProcessing":   "Processando...",
             "sLengthMenu":   "Mostrar _MENU_ registros",
             "sZeroRecords":  "Não foram encontrados resultados",
@@ -24,39 +47,17 @@ function pergunta(){
                 "sFirst":    "Primeiro",
                 "sPrevious": "Anterior",
                 "sNext":     "Seguinte",
-                "sLast":     "Último"
+                "sLast":     "Último",
+                
+               
             }
-        }
+        },
+              
     });
 
-
-
-
    
- //  modal personalizado
 
-      $(document).ready(function(){
-        $('a[data-confirmar]').click(function(ev){
-          
-          var href = $(this).data('href');
-
-          console.log(href);
-
-          if(!$('#confirm-delete').length){
-            $('body').append('<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-danger text-white">EXCLUIR ITEM<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">Tem certeza de que deseja excluir o item selecionado?</div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button><a class="btn btn-danger text-white" id="dataComfirmOK">Apagar</a></div></div></div></div>');
-          }
-          
-          $('#dataComfirmOK').attr('href', href);
-
-              $('#confirm-delete').modal({show: true});
-          
-              return false;
-          
-        });
-      });
-
-} );
-
+  });
 
 String.prototype.reverse = function(){
     return this.split('').reverse().join(''); 
@@ -80,3 +81,4 @@ String.prototype.reverse = function(){
     campo.value = resultado.reverse();
   }
 
+ 
