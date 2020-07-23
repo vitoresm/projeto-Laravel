@@ -11,13 +11,11 @@ $factory->define(Client::class, function (Faker $faker) {
         'email' => $faker->email,
         'telefone' => $faker->phoneNumber,
         
-        'estado' => 'SANTA CATARINA',
+        'estado' => 'SC',
         'cidade' => 'Jaraguá do SUl',
         'bairro' => 'Irineu',
         'rua'   => 'Rua kochela',
         'numero' => $faker->randomDigit,
-        'complemento' => 'perto da casa do ze',
-
-        
+        'complemento' => 'perto da casa do ze',       
     ];
 });

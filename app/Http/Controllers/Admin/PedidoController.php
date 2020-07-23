@@ -21,15 +21,19 @@ class PedidoController extends Controller
         $pedidos = Pedido::with(['buscarCliente', 'buscarPedidoProdutos', 'buscarPedidoProdutos.buscarProduto'])->get();
 
         foreach($pedidos as $item){
-            $totalPPedido = null;
+            $totalPPedido= 0;
+            $valor = array();
+            
 
             foreach($item->buscarPedidoProdutos as $pedidoProduto){
-
-                $totalPPedido = $totalPPedido + $pedidoProduto->quantidade * $pedidoProduto->buscarProduto->preco;
-
+            
+                $totalPPedido = $pedidoProduto->quantidade * $pedidoProduto->buscarProduto->preco;
+            
+            $valor[] = $totalPPedido;
+                
             }
 
-            $item->total_Pedido = $totalPPedido;
+            $item->total_Pedido = array_sum($valor);
 
         }
 
@@ -72,7 +76,7 @@ class PedidoController extends Controller
             $pedido_produto->id_produto = $id_produto;
             $pedido_produto->quantidade = $request->quantidade[$k];
             $pedido_produto->save();
-    
+           
         }
 
         return redirect()->route('admin.pedido.index');
@@ -114,8 +118,6 @@ class PedidoController extends Controller
         return view('admin.pedido.edit', compact('pedidoProdutos'));
 
     }
-
-
 
     /**
      * Update the specified resource in storage.

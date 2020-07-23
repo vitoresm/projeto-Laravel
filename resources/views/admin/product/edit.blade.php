@@ -31,8 +31,8 @@
                 <div class="form-group">
                     
                     <label for="">Descrição</label>
-                        <textarea type="text" class="form-control" required @error('descricao') class="is-invalid"  
-                        @enderror   name="descricao"  rows="3" ></textarea>
+                        <input type="text" class="form-control" value="{{$product->descricao}}" required @error('descricao') class="is-invalid"  
+                        @enderror   name="descricao" >
                     
                         @error('descricao')
                         
@@ -43,19 +43,23 @@
                         @enderror
                 
                 </div>
-                
-                <div class="form-group">
+
+                <div class="input-group form-group mb-3">    
+              
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">R$</span>
+                    </div>
+
+                    <input type="text"  class="form-control" value="{{$product->preco}}" name="preco" onKeyUp="mascaraMoeda(this, event)"  value="{{old('preco')}}" />
                     
-                    <label for="">Preço</label>
-                    <input type="text" name="preco" value="{{$product->preco}}"  class="form-control" @error('preco') class="is-invalid" value="{{old('preco')}}" @enderror  name="preco" onKeyUp="mascaraMoeda(this, event)" >
                     @error('preco')
-                        <div class="invalid-feedback">
-                            
-                            {{$message}}
-                        
-                        </div>
-                    @enderror
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                     @enderror
                 </div>
+                
+               
 
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary" type="submit">Editar</button>

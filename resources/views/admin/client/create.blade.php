@@ -30,7 +30,7 @@
                 <div class="form-group">
                     
                     <label for="">Telefone</label>
-                    <input type="text" name="telefone" class="form-control @error('telefone') is-invalid 
+                    <input type="number" name="telefone" class="form-control @error('telefone') is-invalid 
                     
                     @enderror" value="{{old('telefone')}}">
                     @error('telefone')

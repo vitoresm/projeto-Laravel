@@ -32,7 +32,7 @@
                                    
                                     @foreach ($produtos as $produto)
                                 
-                                         <option data-preco="11" value="{{$produto->id}}" onclick="chamaJavaScript(this)">{{$produto->nome}} | R$ {{$produto->preco}}</option>        
+                                         <option   value="{{$produto->id}}" >{{$produto->nome}} | R$ <span id="valor" >{{$produto->preco}}</span></option>        
     
                                     @endforeach
     
@@ -41,11 +41,12 @@
                                    
                             <div class="form-group ">
                                 <label >Quantidade</label>
-                            <input type="number" id="spinner" data-quantidade class="form-control" value="" onclick="chamaJavaScript(this)" name="quantidade[]"  min="1" max="1000" step="1" required data-decimals="0"/>
+                            <input type="number" id="quantidade" data-quantidade class="form-control" value="" onblur="calcular()" onclick="chamaJavaScript(this)" name="quantidade[]"  min="1" max="1000" step="1" required data-decimals="0" data-toggle="modal" data-target="#delSession" />
                             </div>
                             
+
                         </div>
-    
+                        
                     </div> 
                  
                </div>    
@@ -61,7 +62,10 @@
             </div>        
       
             <button type="submit" class="btn btn-primary">Efetuar pedido</button>
-    
+            <div id="show">
+
+
+            </div> 
         </form>
     </div>
     </div>    

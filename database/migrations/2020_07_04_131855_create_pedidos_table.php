@@ -20,7 +20,7 @@ class CreatePedidosTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('cliente_id')->references('id')->on('clients');
+            $table->foreign('cliente_id')->references('id')->on('clients')->onDelete('cascade');
             
         });
     }

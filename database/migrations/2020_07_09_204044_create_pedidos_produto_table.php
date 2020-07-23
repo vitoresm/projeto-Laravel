@@ -24,9 +24,9 @@ class CreatePedidosProdutoTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('id_pedido')->references('id')->on('pedidos');
+            $table->foreign('id_pedido')->references('id')->on('pedidos')->onDelete('cascade');
             
-            $table->foreign('id_produto')->references('id')->on('products');
+            $table->foreign('id_produto')->references('id')->on('products')->onDelete('cascade');
 
         });
     }
@@ -38,6 +38,6 @@ class CreatePedidosProdutoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos_produtos');
+        Schema::dropIfExists('pedido_produtos');
     }
 }

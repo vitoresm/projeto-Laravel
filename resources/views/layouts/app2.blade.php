@@ -27,157 +27,118 @@
         @include('sweetalert::alert')
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
-				<div class="custom-menu">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	                     <i class="fa fa-bars"></i>
-	                    <span class="sr-only">Toggle Menu</span>
-	        </button>
-       
-        </div>
-	  		<h1><a class="logo">Projeto Laravel</a></h1>
-        <ul class="list-unstyled components mb-5">
-            
+            <nav id="sidebar">
+                <div class="custom-menu">
+                
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+               
+                    </button>
 
-                <li class="nav-item @if(request()->is('inicio')) active @endif ">
-                    <a class="nav-link"   href="{{route('site')}}">Início</a>
-                </li>
-    
-                <!--<h6 class="sidebar-heading px-3 mt-4">
-                
-                    <span>Tabelas</span>
-                    
-                </h6> -->
-    
-                
-                <li class="nav-item  @if(request()->is('admin/cliente')) active @endif">
-                    <a class="nav-link list-unstyled"  href="{{route('admin.cliente.index')}}" role="tab" >Clientes</a>
-    
-                </li>
-                <li class="nav-item  @if(request()->is('admin/products')) active @endif">
-                    <a class="nav-link"  href="{{route('admin.products.index')}}" >
-                        Produtos
-                    </a>
-                </li>
-                <li class="nav-item @if(request()->is('admin/pedido')) active @endif">
-                    <a class="nav-link "  href="{{route('admin.pedido.index')}}" >Pedidos</a>
-                </li>
-    
+                </div>
             
-        
-                <li class="nav-item @if(request()->is('admin/cliente/create'))  active @endif">
-                    <a class="nav-link  "  href="{{route('admin.cliente.create')}}">
-                        Cadastar cliente
-                    </a>
-                </li>
-                <li class="nav-item  @if(request()->is('admin/products/create'))  active @endif">
-                    <a class="nav-link" href="{{route('admin.products.create')}}">
+                <h1><a class="logo">Projeto Laravel</a></h1>
+           
+                <ul class="list-unstyled components mb-5">
+
+
+                    <li class="nav-item @if(request()->is('inicio')) active @endif ">
                     
-                    Cadastar Produto
-    
-                    </a>
-                </li>
-                <li class="nav-item @if(request()->is('admin/pedido/create')) active @endif">
-                    <a class="nav-link  " href="{{route('admin.pedido.create')}}">
-                        Fazer Pedido
-                    </a>
-                </li>
-              
-                <li class="dropdown">
-                   
-                        
+                        <a class="nav-link"   href="{{route('site')}}">Início</a>
+                    
+                    </li>
+
+                    <!--<h6 class="sidebar-heading px-3 mt-4">
+
+                    <span>Tabelas</span>
+
+                    </h6> -->
+
+                    <li class="nav-item  @if(request()->is('admin/cliente')) active @endif">
+                
+                        <a class="nav-link list-unstyled"  href="{{route('admin.cliente.index')}}" role="tab" >Clientes</a>
+
+                    </li>
+                
+                    <li class="nav-item  @if(request()->is('admin/products')) active @endif">
+                
+                        <a class="nav-link"  href="{{route('admin.products.index')}}" >Produtos </a>
+                    
+                    </li>
+                    
+                    <li class="nav-item @if(request()->is('admin/pedido')) active @endif">
+                    
+                        <a class="nav-link "  href="{{route('admin.pedido.index')}}" >Pedidos</a>
+                    
+                    </li>
+
+
+                    <li class="nav-item @if(request()->is('admin/cliente/create'))  active @endif">
+
+                        <a class="nav-link  "  href="{{route('admin.cliente.create')}}">Cadastar cliente</a>
+                    
+                    </li>
+                    
+                    <li class="nav-item  @if(request()->is('admin/products/create'))  active @endif">
+                    
+                        <a class="nav-link" href="{{route('admin.products.create')}}">Cadastar Produto</a>
+                    
+                    </li>
+                    
+                    <li class="nav-item @if(request()->is('admin/pedido/create')) active @endif">
+                    
+                        <a class="nav-link  " href="{{route('admin.pedido.create')}}">Fazer Pedido</a>
+                    
+                    </li>
+
+                    <li>
+
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                             @csrf
-                            <a class="nav-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            Sair
-                        </a>
+                            
+                            <a class="nav-item" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sair</a>
+                        
                         </form>
 
-                </li>
-                  
-        </ul>
+                    </li>
 
-    	</nav>
+                </ul>
+
+            </nav>
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
        
-        @yield('conteudo')
+            @yield('conteudo')
         
-
       </div>
-		</div>
+	</div>
 
 
 
-        </div>
-
-    
-   
-  
-        
-  
-
-   
-  
     <!-- Bootstrap JavaScript -->
     <script src="{{asset('js/app.js')}}"></script>
-   
     <script src="{{asset('js/bootsatrapinputpinner.js')}}"></script>
 
     <!-- JavaScript -->
     <script src="{{asset('js/site.js')}}"></script>
-
+    <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.dataTables.min.css')}}">
     <script src="{{asset('js/tabelateste.js')}}"></script>
 
-    <script>            
+   
+            
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
         
+   <!--  sidebar -->
+    <script src="{{asset('js/menu.js')}}"></script>
+
+    <script>            
             $("#add-produto").click(function () {
-
-          
-                
-                $('#add').append(` 
-               
-                <div class="col-12 col-sm-4 col-md-3" style=" margin:9px; border: 1px solid #3490dc">
-                        
-                        <div>
-                            <label >Produto</label>
-                            <select class="custom-select"  name="produto[]" >
-                                @if(request()->is('admin/pedido/create'))
-                                @foreach ($produtos as $produto)
-                            
-                                <option value="{{$produto->id}}">{{$produto->nome}} | R$ {{$produto->preco}}</option>
-                                   
-                                @endforeach
-                                @endif
-                            </select>                      
-                        </div> 
-                        <div class="form-group ">
-                            <label >Quantidade</label>
-                            <input type="number" class="form-control" id="spinner" name="quantidade[]"  min="1" max="1000" step="1" required data-decimals="0"/>
-                        </div>
-                        
-                    </div>
-                 `);      
-                 
-                
+                $('#add').append('<div class="col-12 col-sm-4 col-md-3" style=" margin:9px; border: 1px solid #3490dc"><div><label >Produto</label><select class="custom-select"  name="produto[]" >@if(request()->is('admin/pedido/create'))@foreach ($produtos as $produto)<option value="{{$produto->id}}">{{$produto->nome}} | R$ {{$produto->preco}}</option>@endforeach @endif</select></div> <div class="form-group "><label >Quantidade</label><input type="number" class="form-control" id="spinner" name="quantidade[]"min="1" max="1000" step="1" required data-decimals="0"/></div></div>');                  
                 });
-            </script> 
+    </script>
      
-         
-
-        <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.dataTables.min.css')}}">
-            
-        <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
-
-        <script src="https://cdn.datatables.net/plug-ins/1.10.21/sorting/currency.js"></script>
-            
-       <!--  sidebar -->
-        <script src="{{asset('js/menu.js')}}"></script>
-
-            
-
-       
 </body>
 </html>
